@@ -16,7 +16,7 @@ class line:
         canvas.create_line(x1, y1, x2, y2, fill=fill_color, width=2)
 
 class Cell:
-    def __init__(self, has_left_wall, has_top_wall, has_right_wall, has_bottom_wall, _x1, _y1, _x2, _y2, _win=None):
+    def __init__(self, has_left_wall, has_top_wall, has_right_wall, has_bottom_wall, _x1, _y1, _x2, _y2, _win=None, visited=False):
         self.has_left_wall = has_left_wall
         self.has_top_wall = has_top_wall
         self.has_right_wall = has_right_wall
@@ -26,6 +26,7 @@ class Cell:
         self.x2 = _x2
         self.y2 = _y2
         self.win = _win
+        self.visited = visited
 
     def draw(self):
         if self.has_left_wall:

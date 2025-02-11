@@ -6,7 +6,8 @@ class Window(Tk):
         Tk.__init__(self)
         self.width = width
         self.height = height
-        self.canvas = Canvas(self)
+        self.geometry(f"{self.width}x{self.height}")
+        self.canvas = Canvas(self, width=self.width, height=self.height)
         self.canvas.pack(fill=BOTH, expand=True)
         self.running = False
         self.protocol("WM_DELETE_WINDOW", self.close)
