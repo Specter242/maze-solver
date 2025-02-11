@@ -101,11 +101,11 @@ class Maze:
         if j < self.num_cols - 1 and not self.cells[i * self.num_cols + j + 1].visited and not self.cells[i * self.num_cols + j + 1].has_left_wall:
             neighbors.append((i, j + 1))
         for next_i, next_j in neighbors:
+            self.cells[i * self.num_cols + j].draw_move(self.cells[next_i * self.num_cols + next_j])
             if self._solve_r(next_i, next_j):
-                self.cells[next_i * self.num_cols + next_j].draw_move(self.cells[next_i * self.num_cols + next_j])
                 return True
             else:
-                self.cells[next_i * self.num_cols + next_j].draw_move(self.cells[next_i * self.num_cols + next_j], undo=True)
+                self.cells[next_i * self.num_cols + next_j].draw_move(self.cells[i * self.num_cols + j], undo=True)
         self.cells[i * self.num_cols + j].visited = False
         return False
     
