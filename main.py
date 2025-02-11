@@ -12,6 +12,8 @@ def main():
     win = Window(window_width, window_height)
     maze = Maze(maze_width, maze_height, 10, 10, cell_size, cell_size, win)
     maze._break_walls_r(0, 0)
+    maze._reset_cells_visited()
+    maze.solve()
     win.wait_for_close()
     
 
