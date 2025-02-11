@@ -16,7 +16,7 @@ class line:
         canvas.create_line(x1, y1, x2, y2, fill=fill_color, width=2)
 
 class Cell:
-    def __init__(self, has_left_wall, has_top_wall, has_right_wall, has_bottom_wall, _x1, _y1, _x2, _y2, _win):
+    def __init__(self, has_left_wall, has_top_wall, has_right_wall, has_bottom_wall, _x1, _y1, _x2, _y2, _win=None):
         self.has_left_wall = has_left_wall
         self.has_top_wall = has_top_wall
         self.has_right_wall = has_right_wall
@@ -30,12 +30,20 @@ class Cell:
     def draw(self):
         if self.has_left_wall:
             self.win.canvas.create_line(self.x1, self.y1, self.x1, self.y2, fill="black", width=2)
+        else:
+            self.win.canvas.create_line(self.x1, self.y1, self.x1, self.y2, fill="white", width=2)
         if self.has_top_wall:
             self.win.canvas.create_line(self.x1, self.y1, self.x2, self.y1, fill="black", width=2)
+        else:
+            self.win.canvas.create_line(self.x1, self.y1, self.x2, self.y1, fill="white", width=2)
         if self.has_right_wall:
             self.win.canvas.create_line(self.x2, self.y1, self.x2, self.y2, fill="black", width=2)
+        else:
+            self.win.canvas.create_line(self.x2, self.y1, self.x2, self.y2, fill="white", width=2)
         if self.has_bottom_wall:
             self.win.canvas.create_line(self.x1, self.y2, self.x2, self.y2, fill="black", width=2)
+        else:
+            self.win.canvas.create_line(self.x1, self.y2, self.x2, self.y2, fill="white", width=2)
 
     def draw_move(self, to_cell, undo=False):
         # Calculate the center points of self and to_cell
