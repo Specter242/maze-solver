@@ -27,15 +27,15 @@ class Cell:
         self.y2 = _y2
         self.win = _win
 
-    def draw(self, x1=0, y1=0, x2=0, y2=0):
+    def draw(self):
         if self.has_left_wall:
-            self.win.canvas.create_line(x1, y1, x1, y2, fill="black", width=2)
+            self.win.canvas.create_line(self.x1, self.y1, self.x1, self.y2, fill="black", width=2)
         if self.has_top_wall:
-            self.win.canvas.create_line(x1, y1, x2, y1, fill="black", width=2)
+            self.win.canvas.create_line(self.x1, self.y1, self.x2, self.y1, fill="black", width=2)
         if self.has_right_wall:
-            self.win.canvas.create_line(x2, y1, x2, y2, fill="black", width=2)
+            self.win.canvas.create_line(self.x2, self.y1, self.x2, self.y2, fill="black", width=2)
         if self.has_bottom_wall:
-            self.win.canvas.create_line(x1, y2, x2, y2, fill="black", width=2)
+            self.win.canvas.create_line(self.x1, self.y2, self.x2, self.y2, fill="black", width=2)
 
     def draw_move(self, to_cell, undo=False):
         # Calculate the center points of self and to_cell
